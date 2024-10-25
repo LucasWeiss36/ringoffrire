@@ -6,15 +6,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { GameInfoComponent } from '../game-info/game-info.component';
 
 @Component({
 	selector: 'app-game',
 	standalone: true,
-	imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconModule],
+	imports: [CommonModule, PlayerComponent, MatButtonModule, MatIconModule,GameInfoComponent],
 	templateUrl: './game.component.html',
 	styleUrl: './game.component.scss',
 })
 export class GameComponent {
+	getCardInfo = false
 	pickCardAnimation = false;
 	currentCard?: string = '';
 	game!: Game;
@@ -26,19 +28,20 @@ export class GameComponent {
 
 	newGame() {
 		this.game = new Game();
-		console.log(this.game);
 	}
 
 	takeCard() {
 		if (!this.pickCardAnimation) {
 			this.currentCard = this.game.stack.pop();
 			this.pickCardAnimation = true;
-			console.log(this.currentCard);
-			console.log(this.game.playedCards);
+			this.game.currentPlayer++;
+			this.game.currentPlayer = this.game.currentPlayer % this.game.players.length
 			setTimeout(() => {
 				this.game.playedCards.push(this.currentCard!);
 				this.pickCardAnimation = false;
+				this.getCardInfo = true
 			}, 1000);
+			this.getCardInfo = false
 		}
 	}
 

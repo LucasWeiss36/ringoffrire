@@ -61,3 +61,28 @@
 	right: 32px;
 	bottom: 32px;
 }
+
+.pin-bottom{
+	position: absolute;
+    bottom: 32px;
+    left: 100px;
+    right: 100px;
+	opacity: 0;
+}
+
+
+.showInfo{
+	animation: showInfo 250ms ease-in-out;
+	opacity: 1;
+}
+
+
+@keyframes showInfo{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
