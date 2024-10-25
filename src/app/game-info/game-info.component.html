@@ -1,4 +1,4 @@
 <mat-card appearance="outlined">
-	<mat-card-title style="margin: 15px 0 0 15px; font-size: 28px;">{{title}}</mat-card-title>
-	<mat-card-content>{{descriptions}}</mat-card-content>
-  </mat-card>
+	<mat-card-title style="margin: 15px 0 0 15px; font-size: 28px">{{ card ? title : 'Please pick a card' }}</mat-card-title>
+	<mat-card-content>{{ card ? descriptions : 'click on the card stack to select the next card' }}</mat-card-content>
+</mat-card>

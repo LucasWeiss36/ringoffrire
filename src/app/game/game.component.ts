@@ -16,7 +16,6 @@ import { GameInfoComponent } from '../game-info/game-info.component';
 	styleUrl: './game.component.scss',
 })
 export class GameComponent {
-	getCardInfo = false
 	pickCardAnimation = false;
 	currentCard?: string = '';
 	game!: Game;
@@ -39,16 +38,14 @@ export class GameComponent {
 			setTimeout(() => {
 				this.game.playedCards.push(this.currentCard!);
 				this.pickCardAnimation = false;
-				this.getCardInfo = true
 			}, 1000);
-			this.getCardInfo = false
 		}
 	}
 
 	openDialog(): void {
 		const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 		dialogRef.afterClosed().subscribe((name: string) => {
-			if (name !== undefined) {
+			if (name && name.length > 0) {
 				this.game.players.push(name);
 			}
 		});

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,11 +13,11 @@ import { FormsModule } from '@angular/forms'; // Für ngModel
 	styleUrl: './dialog-add-player.component.scss',
 })
 export class DialogAddPlayerComponent {
-	constructor() {}
+	constructor(public dialogRef : MatDialogRef<DialogAddPlayerComponent>) {}
 
 	name: string = '';
 
-	onNoClick(){
-
+	onNoClick() {
+		this.dialogRef.close();
 	}
 }
