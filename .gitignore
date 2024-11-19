@@ -43,3 +43,7 @@ Thumbs.db
 
 
 /.prettierrc
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
